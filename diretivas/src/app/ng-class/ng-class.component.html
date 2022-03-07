@@ -1,0 +1,43 @@
+<h1>
+  <i
+    class="fa-star"
+    [class.far]="!meuFavorito"
+    [class.fas]="meuFavorito"
+    (click)="onClick()"
+  ></i>
+</h1>
+
+<h1>
+  <i
+    class="fa-star"
+    [ngClass]="{
+      far: !meuFavorito,
+      fas: meuFavorito
+    }"
+    (click)="onClick()"
+  ></i>
+</h1>
+
+<!--Button mudar com style-->
+
+<button
+  [style.backgroundColor]="ativo ? 'blue' : 'red'"
+  [style.fontSize]="tamanhoFonte + 'px'"
+  (click)="mudarAtivo()"
+>
+  Mudar cor
+</button>
+
+<input type="text" [(ngModel)]="tamanhoFonte"> <!--para ele mudar enquanto mexe-->
+
+<!--COM NGSTYLE-->
+<br>
+<button
+  [ngStyle]="{
+      'backgroundColor': (ativo ? 'blue' : 'red'),
+      'fontSize': (tamanhoFonte + 'px')
+  }"
+  (click)="mudarAtivo()"
+> Mudar cor
+</button>
+<input type="text" [(ngModel)]="tamanhoFonte"> <!--para ele mudar enquanto mexe-->

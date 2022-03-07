@@ -1,0 +1,7 @@
+<p>exemplos-pipes works!</p>
+
+<p>Titulo: {{ livro.titulo | uppercase | lowercase | camelCase}}</p>
+<p>Páginas: {{ livro.numeroPaginas | number: '2.1-1' }}</p>
+<p>Preco: {{ livro.preco | currency: 'BRL' }}</p>
+<p>Data Lançamento: {{ livro.dataLancamento | date: 'dd/MMM/y' }}</p>
+<pre>Livro: {{ livro | json }}</pre>
