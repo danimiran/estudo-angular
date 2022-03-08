@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { interval, Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-exemplos-pipes',
@@ -13,6 +15,33 @@ export class ExemplosPipesComponent implements OnInit {
     preco: 34.70,
     dataLancamento: new Date(2014, 5, 21)
   }
+
+  livros: string[] = ['Angular', 'JS'];
+  filtro: string = '';
+
+  obterCursos(){
+
+    if(this.livros.length == 0 || this.filtro === undefined || this.filtro.trim() === ''){
+      return this.livros;
+    }
+
+    return this.livros.filter(filtro => {
+      if (filtro.toLocaleLowerCase().indexOf(this.filtro.toLocaleLowerCase()) >= 0) {
+        return true;
+      }
+      return false;
+    });
+  }
+
+  //filtro async
+
+  valorAsync = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('Valor assíncrono'), 2000)
+  });
+
+  valorAsync2 = interval(2000).subscribe(x => console.log('teste'));
+
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,16 @@
+
+  <nav>
+    <div class="nav-wrapper">
+      <a routerLink="/home" class="brand-logo right">Rotas Angular</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li routerLinkActive="active"><a  routerLink="/login">Login</a></li>
+        <li routerLinkActive="active"><a  routerLink="/cursos" [queryParams]="{pagina:1}">Cursos</a></li>
+        <!-- <li routerLinkActive="active"><a  [routerLink]="['/curso', 1]">Detalhe</a></li> -->
+        <li routerLinkActive="active"><a  routerLink="/alunos">Alunos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>

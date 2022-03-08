@@ -5,3 +5,15 @@
 <p>Preco: {{ livro.preco | currency: 'BRL' }}</p>
 <p>Data Lançamento: {{ livro.dataLancamento | date: 'dd/MMM/y' }}</p>
 <pre>Livro: {{ livro | json }}</pre>
+
+
+<input type="text" [(ngModel)]="filtro">
+
+<h5>Maneira correta de filtro</h5>
+
+<ul>
+    <li *ngFor="let liv of obterCursos()">{{ liv }}</li>
+</ul>
+
+<p> {{ valorAsync | async }}</p>
+<!-- <p> {{ valorAsync2 | async}}</p> -->
