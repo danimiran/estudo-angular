@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Aluno } from 'src/app/class/Aluno';
 import { AlunosService } from 'src/app/services/alunos.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AlunosService } from 'src/app/services/alunos.service';
 })
 export class AlunosDetalheComponent implements OnInit {
  
-  aluno?: any;
+  aluno: Aluno | any;
   inscricao?: Subscription;
 
   constructor(
@@ -24,7 +25,25 @@ export class AlunosDetalheComponent implements OnInit {
       let id = params['id'];
       this.aluno = this.getDetalhes(id);
     });
+
+    this.inscricao = this.route.data.subscribe(
+      (info) => {
+        console.log(info);
+        this.aluno = info['aluno']; //recebe os dados antes de carregar o componente (nome do acesso tem que ser o mesmo do resolver)
+      }
+    )
   }
+
+  // ngOnInit(): void {
+
+
+  //   this.inscricao = this.route.data.subscribe(
+  //     (info) => {
+  //       console.log(info);
+  //       this.aluno = info.aluno;
+  //     }
+  //   );
+  // }
 
   ngOnDestroy(){
     this.inscricao?.unsubscribe();

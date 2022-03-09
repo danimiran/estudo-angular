@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IformDesativeGuard } from 'src/app/guards/iform-desative.guard';
 import { AlunosService } from 'src/app/services/alunos.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { AlunosService } from 'src/app/services/alunos.service';
   templateUrl: './alunos-form.component.html',
   styleUrls: ['./alunos-form.component.css']
 })
-export class AlunosFormComponent implements OnInit {
+export class AlunosFormComponent implements OnInit, IformDesativeGuard {
 
   aluno: any;
 
@@ -24,6 +25,16 @@ export class AlunosFormComponent implements OnInit {
         this.aluno = {};
       }
     })
+  }
+
+  
+  mudarRota(){
+    confirm('pode mudar rota');
+    return true;
+  }
+
+  podeDesativar() {
+   return this.mudarRota(); 
   }
 
 }
