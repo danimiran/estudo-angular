@@ -1,0 +1,54 @@
+<div class="container">
+  <h1>Form Exemplo Reativo</h1>
+
+  <div class="row p-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label for="nome">Nome </label>
+      <input
+        id="nome"
+        class="form-control"
+        type="text"
+        formControlName="nome"
+      />
+
+      <label for="idade">idade: </label>
+      <input
+        id="idade"
+        class="form-control"
+        type="text"
+        formControlName="idade"
+      />
+      <div *ngIf="nome?.errors?.['request']">Request</div>
+      <br />
+
+      <div formArrayName="telefone" class="row">
+        <div class="col-2">
+          <button type="button" class="btn btn-primary btn-brock col-12" (click)="addTelefone()">+ Add Tel</button>
+          <!--Adiciona mais campos-->
+        </div>
+        <div class="col-10">
+          <div *ngFor="let tel of telefone.controls; let i = index" class="row">
+            <div class="col-2">
+              <label for="tel-{{ i }}">Telefone:</label>
+            </div>
+            <div class="col-10">
+              <input
+                class="form-control mb-2"
+                id="tel-{{ i }}"
+                type="text"
+                [formControlName]="i"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <p>Complete the form to enable button.</p> -->
+      
+      <button type="submit" class="btn btn-primary col-12" [disabled]="!form.valid">Submit</button>
+    </form>
+
+    <p>Form Status: {{ form.status }}</p>
+    <!--Para ver o status da saida Valido ou não-->
+  </div>
+</div>
