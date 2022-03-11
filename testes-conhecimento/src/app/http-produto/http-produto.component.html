@@ -1,0 +1,18 @@
+<div class="container">
+  <p>Lista de Produtos API</p>
+  <div class="row">
+    <div class="col-md-6" *ngFor="let produto of lista">
+      <div class="card" >
+        <div class="card-header">
+          {{ produto.nome }}
+        </div>
+        <div class="card-body">
+          <p>Id: {{ produto.id }}</p>
+          <p>descricao: {{ produto.descricao }}</p>
+          <p>Preço: {{ produto.preco }}</p>
+          <p>Id categoria: {{ produto.categoria_id }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
